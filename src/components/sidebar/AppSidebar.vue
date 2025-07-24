@@ -1,7 +1,7 @@
 <template>
   <VaSidebar v-model="writableVisible" :width="sidebarWidth" :color="color" minimized-width="0">
     <VaAccordion v-model="value" multiple>
-      <VaCollapse v-for="(route, index) in navigationRoutes.routes" :key="index">
+      <VaCollapse v-for="(route, index) in items" :key="index">
         <template #header="{ value: isCollapsed }">
           <VaSidebarItem
             :to="route.children ? undefined : { name: route.name }"
@@ -26,24 +26,6 @@
               </VaSidebarItemTitle>
             </VaSidebarItemContent>
           </VaSidebarItem>
-        </template>
-        <template #body>
-          <div v-for="(childRoute, index2) in route.children" :key="index2">
-            <VaSidebarItem
-              :to="{ name: childRoute.name }"
-              :active="isActiveChildRoute(childRoute)"
-              :active-color="activeColor"
-              :text-color="textColor(childRoute)"
-              :aria-label="`Visit ${t(route.displayName)}`"
-              hover-opacity="0.10"
-            >
-              <VaSidebarItemContent class="py-3 pr-2 pl-11">
-                <VaSidebarItemTitle class="leading-5 font-semibold">
-                  {{ t(childRoute.displayName) }}
-                </VaSidebarItemTitle>
-              </VaSidebarItemContent>
-            </VaSidebarItem>
-          </div>
         </template>
       </VaCollapse>
     </VaAccordion>
@@ -73,6 +55,21 @@ export default defineComponent({
 
     const value = ref<boolean[]>([])
 
+    const items = [
+      {
+        id: 1,
+        displayName: 'menu.order',
+        meta: { icon: 'reorder' },
+        name: 'dashboard',
+      },
+      {
+        id: 2,
+        displayName: 'menu.payments',
+        meta: { icon: 'payment' },
+        name: 'users',
+      },
+    ]
+
     const writableVisible = computed({
       get: () => props.visible,
       set: (v: boolean) => emit('update:visible', v),
@@ -89,7 +86,7 @@ export default defineComponent({
     }
 
     const setActiveExpand = () =>
-      (value.value = navigationRoutes.routes.map((route: INavigationRoute) => routeHasActiveChild(route)))
+      (value.value = items.map((route: INavigationRoute) => routeHasActiveChild(route)))
 
     const sidebarWidth = computed(() => (props.mobile ? '100vw' : '280px'))
     const color = computed(() => getColor('background-secondary'))
@@ -104,6 +101,7 @@ export default defineComponent({
     return {
       writableVisible,
       sidebarWidth,
+      items,
       value,
       color,
       activeColor,
