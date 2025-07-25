@@ -8,18 +8,28 @@ import RouteViewComponent from '../layouts/RouterBypass.vue'
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/:pathMatch(.*)*',
-    redirect: { name: 'dashboard' },
+    redirect: { name: 'orders' },
   },
   {
     name: 'admin',
     path: '/',
     component: AppLayout,
-    redirect: { name: 'dashboard' },
+    redirect: { name: 'orders' },
     children: [
       {
         name: 'dashboard',
         path: 'dashboard',
         component: () => import('../pages/admin/dashboard/Dashboard.vue'),
+      },
+      {
+        name: 'orders',
+        path: 'orders',
+        component: () => import('../pages/admin/dashboard/Order.vue'),
+      },
+      {
+        name: 'payments',
+        path: 'payments',
+        component: () => import('../pages/admin/dashboard/Payments.vue'),
       },
       {
         name: 'settings',
@@ -41,28 +51,28 @@ const routes: Array<RouteRecordRaw> = [
         path: 'projects',
         component: () => import('../pages/projects/ProjectsPage.vue'),
       },
-      {
-        name: 'payments',
-        path: '/payments',
-        component: RouteViewComponent,
-        children: [
-          {
-            name: 'payment-methods',
-            path: 'payment-methods',
-            component: () => import('../pages/payments/PaymentsPage.vue'),
-          },
-          {
-            name: 'billing',
-            path: 'billing',
-            component: () => import('../pages/billing/BillingPage.vue'),
-          },
-          {
-            name: 'pricing-plans',
-            path: 'pricing-plans',
-            component: () => import('../pages/pricing-plans/PricingPlans.vue'),
-          },
-        ],
-      },
+      // {
+      //   name: 'payments',
+      //   path: '/payments',
+      //   component: RouteViewComponent,
+      //   children: [
+      //     {
+      //       name: 'payment-methods',
+      //       path: 'payment-methods',
+      //       component: () => import('../pages/payments/PaymentsPage.vue'),
+      //     },
+      //     {
+      //       name: 'billing',
+      //       path: 'billing',
+      //       component: () => import('../pages/billing/BillingPage.vue'),
+      //     },
+      //     {
+      //       name: 'pricing-plans',
+      //       path: 'pricing-plans',
+      //       component: () => import('../pages/pricing-plans/PricingPlans.vue'),
+      //     },
+      //   ],
+      // },
       {
         name: 'faq',
         path: '/faq',

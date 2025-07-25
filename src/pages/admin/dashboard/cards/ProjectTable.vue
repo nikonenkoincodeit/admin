@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { defineVaDataTableColumns } from 'vuestic-ui'
+import { defineColumns } from 'vuestic-ui'
 import UserAvatar from '../../../users/widgets/UserAvatar.vue'
 import ProjectStatusBadge from '../../../projects/components/ProjectStatusBadge.vue'
 import { useProjects } from '../../../projects/composables/useProjects'

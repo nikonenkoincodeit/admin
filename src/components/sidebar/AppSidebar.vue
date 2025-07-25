@@ -58,15 +58,15 @@ export default defineComponent({
     const items = [
       {
         id: 1,
-        displayName: 'menu.order',
+        displayName: 'menu.orders',
         meta: { icon: 'reorder' },
-        name: 'dashboard',
+        name: 'orders',
       },
       {
         id: 2,
         displayName: 'menu.payments',
         meta: { icon: 'payment' },
-        name: 'users',
+        name: 'payments',
       },
     ]
 

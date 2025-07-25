@@ -1,11 +1,14 @@
 <script setup lang="ts">
 import { ref, watchEffect } from 'vue'
+import { useModal, useToast } from 'vuestic-ui'
+
 import UsersTable from './widgets/UsersTable.vue'
 import EditUserForm from './widgets/EditUserForm.vue'
-import { User } from './types'
+
 import { useUsers } from './composables/useUsers'
-import { useModal, useToast } from 'vuestic-ui'
 import { useProjects } from '../projects/composables/useProjects'
+
+import { User } from './types'
 
 const doShowEditUserModal = ref(false)
 
