@@ -16,11 +16,11 @@ const routes: Array<RouteRecordRaw> = [
     component: AppLayout,
     redirect: { name: 'login' },
     children: [
-      {
-        name: 'dashboard',
-        path: 'dashboard',
-        component: () => import('../pages/admin/dashboard/Dashboard.vue'),
-      },
+      // {
+      //   name: 'dashboard',
+      //   path: 'dashboard',
+      //   component: () => import('../pages/admin/dashboard/Dashboard.vue'),
+      // },
       {
         name: 'orders',
         path: 'orders',
@@ -31,26 +31,26 @@ const routes: Array<RouteRecordRaw> = [
         path: 'payments',
         component: () => import('../pages/admin/dashboard/Payments.vue'),
       },
-      {
-        name: 'settings',
-        path: 'settings',
-        component: () => import('../pages/settings/Settings.vue'),
-      },
-      {
-        name: 'preferences',
-        path: 'preferences',
-        component: () => import('../pages/preferences/Preferences.vue'),
-      },
-      {
-        name: 'users',
-        path: 'users',
-        component: () => import('../pages/users/UsersPage.vue'),
-      },
-      {
-        name: 'projects',
-        path: 'projects',
-        component: () => import('../pages/projects/ProjectsPage.vue'),
-      },
+      // {
+      //   name: 'settings',
+      //   path: 'settings',
+      //   component: () => import('../pages/settings/Settings.vue'),
+      // },
+      // {
+      //   name: 'preferences',
+      //   path: 'preferences',
+      //   component: () => import('../pages/preferences/Preferences.vue'),
+      // },
+      // {
+      //   name: 'users',
+      //   path: 'users',
+      //   component: () => import('../pages/users/UsersPage.vue'),
+      // },
+      // {
+      //   name: 'projects',
+      //   path: 'projects',
+      //   component: () => import('../pages/projects/ProjectsPage.vue'),
+      // },
       // {
       //   name: 'payments',
       //   path: '/payments',
@@ -73,11 +73,11 @@ const routes: Array<RouteRecordRaw> = [
       //     },
       //   ],
       // },
-      {
-        name: 'faq',
-        path: '/faq',
-        component: () => import('../pages/faq/FaqPage.vue'),
-      },
+      // {
+      //   name: 'faq',
+      //   path: '/faq',
+      //   component: () => import('../pages/faq/FaqPage.vue'),
+      // },
     ],
   },
   {
@@ -89,21 +89,21 @@ const routes: Array<RouteRecordRaw> = [
         path: 'login',
         component: () => import('../pages/auth/Login.vue'),
       },
-      {
-        name: 'signup',
-        path: 'signup',
-        component: () => import('../pages/auth/Signup.vue'),
-      },
-      {
-        name: 'recover-password',
-        path: 'recover-password',
-        component: () => import('../pages/auth/RecoverPassword.vue'),
-      },
-      {
-        name: 'recover-password-email',
-        path: 'recover-password-email',
-        component: () => import('../pages/auth/CheckTheEmail.vue'),
-      },
+      // {
+      //   name: 'signup',
+      //   path: 'signup',
+      //   component: () => import('../pages/auth/Signup.vue'),
+      // },
+      // {
+      //   name: 'recover-password',
+      //   path: 'recover-password',
+      //   component: () => import('../pages/auth/RecoverPassword.vue'),
+      // },
+      // {
+      //   name: 'recover-password-email',
+      //   path: 'recover-password-email',
+      //   component: () => import('../pages/auth/CheckTheEmail.vue'),
+      // },
       {
         path: '',
         redirect: { name: 'login' },
