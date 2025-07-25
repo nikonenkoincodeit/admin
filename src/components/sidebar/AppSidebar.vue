@@ -2,7 +2,7 @@
   <VaSidebar v-model="writableVisible" :width="sidebarWidth" :color="color" minimized-width="0">
     <VaAccordion v-model="value" multiple>
       <VaCollapse v-for="(route, index) in items" :key="index">
-        <template #header="{ value: isCollapsed }">
+        <template #header>
           <VaSidebarItem
             :to="{ name: route.name }"
             :active="routeHasActiveChild(route)"
@@ -31,7 +31,7 @@
   </VaSidebar>
 </template>
 <script lang="ts">
-import { defineComponent, watch, ref, computed } from 'vue'
+import { defineComponent, ref, computed } from 'vue'
 import { useRoute } from 'vue-router'
 
 import { useI18n } from 'vue-i18n'
