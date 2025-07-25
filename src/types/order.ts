@@ -6,7 +6,7 @@ export interface OrderItem {
 }
 
 export interface Order {
-  order_id: string
+  order_id: string | number
   order_date: string
   customer: {
     name: string
