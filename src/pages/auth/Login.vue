@@ -56,7 +56,7 @@ const formData = reactive({
 const submit = () => {
   if (validate()) {
     init({ message: "You've successfully logged in", color: 'success' })
-    push({ name: 'dashboard' })
+    push({ name: 'orders' })
   }
 }
 </script>
