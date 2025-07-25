@@ -27,17 +27,7 @@
 <script setup lang="ts">
 import PaymentsTable from '../../../components/admin/PaymentsTable.vue'
 
-import { useUsers } from '../../users/composables/useUsers'
-import { useProjects } from '../../projects/composables/useProjects'
-
 import { usePaymentsStore } from '../../../stores/payments'
 
-import { User } from '../../users/types'
-
 const store = usePaymentsStore()
-
-
-const { users, isLoading, filters, sorting, pagination, error, ...usersApi } = useUsers()
-const { projects } = useProjects()
-
 </script>
