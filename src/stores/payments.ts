@@ -10,7 +10,7 @@ export const usePaymentsStore = defineStore('payments', () => {
   const _payments = ref(paymentsJson)
   const isLoading = ref(false)
   const _sortingOrder = ref<'asc' | 'desc' | null>('desc')
-  const _sortBy = ref<string | false>('order_date')
+  const _sortBy = ref<string>('order_date')
   const _search = ref<string>('')
 
   const filterByFields = ['transaction_id', 'date']
@@ -26,7 +26,7 @@ export const usePaymentsStore = defineStore('payments', () => {
     set: (value) => (_sortingOrder.value = value),
   })
 
-  const sortBy = computed<string | false>({
+  const sortBy = computed<string>({
     get: () => _sortBy.value,
     set: (value) => (_sortBy.value = value),
   })

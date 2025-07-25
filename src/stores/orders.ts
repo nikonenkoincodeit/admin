@@ -10,7 +10,7 @@ export const useOrdersStore = defineStore('orders', () => {
   const _search = ref<string>('')
   const _orders = ref<Order[]>(ordersJson)
   const _sortingOrder = ref<'asc' | 'desc' | null>('desc')
-  const _sortBy = ref<string | false>('order_date')
+  const _sortBy = ref<string>('order_date')
   const filterByFields = ['customer.name', 'manufacturer.name']
   const isLoading = ref(false)
 
@@ -29,7 +29,7 @@ export const useOrdersStore = defineStore('orders', () => {
     set: (value) => (_sortingOrder.value = value),
   })
 
-  const sortBy = computed<string | false>({
+  const sortBy = computed<string>({
     get: () => _sortBy.value,
     set: (value) => (_sortBy.value = value),
   })

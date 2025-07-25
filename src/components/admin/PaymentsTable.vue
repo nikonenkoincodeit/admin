@@ -74,7 +74,7 @@ const props = defineProps({
   },
   loading: { type: Boolean, default: false },
   pagination: { type: Object as PropType<Pagination>, required: true },
-  sortBy: { type: String as PropType<string | boolean>, required: true },
+  sortBy: { type: String as PropType<string>, required: true },
   sortingOrder: { type: String as PropType<'asc' | 'desc' | null>, default: null },
 })
 
