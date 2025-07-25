@@ -4,11 +4,11 @@
       <VaCollapse v-for="(route, index) in items" :key="index">
         <template #header="{ value: isCollapsed }">
           <VaSidebarItem
-            :to="route.children ? undefined : { name: route.name }"
+            :to="{ name: route.name }"
             :active="routeHasActiveChild(route)"
             :active-color="activeColor"
             :text-color="textColor(route)"
-            :aria-label="`${route.children ? 'Open category ' : 'Visit'} ${t(route.displayName)}`"
+            :aria-label="`Visit ${t(route.displayName)}`"
             role="button"
             hover-opacity="0.10"
           >
@@ -22,7 +22,6 @@
               />
               <VaSidebarItemTitle class="flex justify-between items-center leading-5 font-semibold">
                 {{ t(route.displayName) }}
-                <VaIcon v-if="route.children" :name="arrowDirection(isCollapsed)" size="20px" />
               </VaSidebarItemTitle>
             </VaSidebarItemContent>
           </VaSidebarItem>
@@ -85,8 +84,8 @@ export default defineComponent({
       return section.children.some(({ name }) => route.path.endsWith(`${name}`))
     }
 
-    const setActiveExpand = () =>
-      (value.value = items.map((route: INavigationRoute) => routeHasActiveChild(route)))
+    // const setActiveExpand = () =>
+    //   (value.value = items.map((route: INavigationRoute) => routeHasActiveChild(route)))
 
     const sidebarWidth = computed(() => (props.mobile ? '100vw' : '280px'))
     const color = computed(() => getColor('background-secondary'))
@@ -96,7 +95,7 @@ export default defineComponent({
     const textColor = (route: INavigationRoute) => (routeHasActiveChild(route) ? 'primary' : 'textPrimary')
     const arrowDirection = (state: boolean) => (state ? 'va-arrow-up' : 'va-arrow-down')
 
-    watch(() => route.fullPath, setActiveExpand, { immediate: true })
+    // watch(() => route.fullPath, setActiveExpand, { immediate: true })
 
     return {
       writableVisible,
