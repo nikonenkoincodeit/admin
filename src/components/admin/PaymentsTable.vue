@@ -3,19 +3,17 @@
     v-model:sort-by="sortByVModel"
     v-model:sorting-order="sortingOrderVModel"
     :columns="columns"
-    :items="orders"
+    :items="items"
     :loading="$props.loading"
   >
-    <template #cell(order_date)="{ rowData }">
-      {{ new Date(rowData.order_date).toLocaleDateString() }}
+    <template #cell(date)="{ rowData }">
+      {{ new Date(rowData.date).toLocaleString() }}
     </template>
-
-    <template #cell(total_amount)="{ rowData }"> {{ rowData.summary.total_amount }} ₴ </template>
 
     <template #cell(status)="{ rowData }">
       <VaBadge
-        :text="rowData.payment.status === 'paid' ? 'Paid' : 'Not paid'"
-        :color="rowData.payment.status === 'paid' ? 'success' : 'danger'"
+        :text="rowData.status === 'paid' ? 'Paid' : 'Not paid'"
+        :color="rowData.status === 'paid' ? 'success' : 'danger'"
       />
     </template>
   </VaDataTable>
@@ -60,22 +58,18 @@ import { useVModel } from '@vueuse/core'
 import { defineVaDataTableColumns } from 'vuestic-ui'
 
 import type { PropType } from 'vue'
-import type { Order, Pagination } from '../../types/order'
+import type { Pagination } from '../../types/order'
+import type { PaymentType } from '../../types/payment'
 
 const columns = defineVaDataTableColumns([
-  { label: 'Order №', key: 'order_id', sortable: true },
-  { label: 'Date', key: 'order_date', sortable: true },
-  { label: 'Customer', key: 'customer.name', sortable: true },
-  { label: 'Manufacturer', key: 'manufacturer.name', sortable: true },
-  { label: 'Quantity of Items', key: 'summary.total_quantity', sortable: true },
-  { label: 'Total Amount', key: 'total_amount', sortable: true },
-  { label: 'Delivery Address', key: 'delivery.address', sortable: false },
-  { label: 'Payment', key: 'status', sortable: true },
+  { label: 'Transaction ID', key: 'transaction_id', sortable: true },
+  { label: 'Date', key: 'date', sortable: true },
+  { label: 'Status', key: 'status', sortable: true },
 ])
 
 const props = defineProps({
-  orders: {
-    type: Array as PropType<Order[]>,
+  items: {
+    type: Array as PropType<PaymentType[]>,
     required: true,
   },
   loading: { type: Boolean, default: false },
@@ -89,7 +83,7 @@ const emit = defineEmits<{
   (event: 'update:sortingOrder', sortingOrder: 'asc' | 'desc' | null): void
 }>()
 
-const orders = toRef(props, 'orders')
+const items = toRef(props, 'items')
 const sortByVModel = useVModel(props, 'sortBy', emit)
 const sortingOrderVModel = useVModel(props, 'sortingOrder', emit)
 
